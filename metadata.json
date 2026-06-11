@@ -1,0 +1,6 @@
+{
+  "name": "Telefon ichidagi AI",
+  "description": "Telefon interfeysi ichidagi o'ta tez ishlovchi AI yordamchisi va dastur kodi displeyi",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
