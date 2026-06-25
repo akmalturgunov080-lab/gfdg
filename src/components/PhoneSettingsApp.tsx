@@ -9,6 +9,7 @@ interface PhoneSettingsAppProps {
 }
 
 const WALLPAPERS = [
+  { name: 'Ajib Fluid Glass', url: 'ajib_fluid_glass' },
   { name: 'Midnight Cosmic', url: 'https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?auto=format&fit=crop&w=600&q=80' },
   { name: 'Aurora Borealis', url: 'https://images.unsplash.com/photo-1579033461380-adb47c3eb938?auto=format&fit=crop&w=600&q=80' },
   { name: 'Neon Cyberpunk', url: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=600&q=80' },
@@ -92,7 +93,16 @@ export default function PhoneSettingsApp({
                   }`}
                   title={wall.name}
                 >
-                  <img src={wall.url} alt={wall.name} className="w-full h-full object-cover" />
+                  {wall.url === 'ajib_fluid_glass' ? (
+                    <div className="w-full h-full bg-gradient-to-tr from-[#020617] via-[#1e1b4b] to-[#0f172a] flex items-center justify-center p-1 relative">
+                      <div className="absolute inset-x-0 top-1/4 h-1/2 bg-pink-500/10 blur-[4px] rounded-full"></div>
+                      <div className="w-5 h-5 rounded-full bg-gradient-to-tr from-cyan-400/40 via-blue-500/30 to-purple-500/40 border border-white/20 shadow-inner flex items-center justify-center relative">
+                        <div className="absolute top-0.5 left-0.5 w-2.5 h-1.5 bg-white/35 rounded-full rotate-[-15deg] blur-[0.2px]"></div>
+                      </div>
+                    </div>
+                  ) : (
+                    <img src={wall.url} alt={wall.name} className="w-full h-full object-cover" />
+                  )}
                   {active && (
                     <div className="absolute inset-0 bg-emerald-500/10 flex items-center justify-center">
                       <span className="bg-emerald-500 text-slate-950 p-0.5 rounded-full text-[8px] font-bold">✔</span>
@@ -126,6 +136,39 @@ export default function PhoneSettingsApp({
               );
             })}
           </div>
+        </div>
+
+        {/* Device View State Selector inside Settings App */}
+        <div className="space-y-2">
+          <h3 className="font-semibold text-[11px] text-slate-400 uppercase tracking-wider flex items-center space-x-1">
+            <Smartphone className="w-3.5 h-3.5" />
+            <span>Telefon Ko'rinishi</span>
+          </h3>
+          <div className="flex bg-slate-950 p-1 rounded-xl border border-slate-800">
+            <button
+              onClick={() => onUpdateSettings({ ...settings, phoneView: 'front' })}
+              className={`flex-1 py-1.5 rounded-lg text-[10px] font-bold uppercase transition cursor-pointer text-center ${
+                settings.phoneView === 'front' 
+                  ? 'bg-blue-600 text-white shadow-sm' 
+                  : 'text-slate-400 hover:text-slate-200'
+              }`}
+            >
+              Oldi (Ekran)
+            </button>
+            <button
+              onClick={() => onUpdateSettings({ ...settings, phoneView: 'back' })}
+              className={`flex-1 py-1.5 rounded-lg text-[10px] font-bold uppercase transition cursor-pointer text-center ${
+                settings.phoneView === 'back' 
+                  ? 'bg-emerald-600 text-white shadow-sm' 
+                  : 'text-slate-400 hover:text-slate-200'
+              }`}
+            >
+              Orqa (Kamera)
+            </button>
+          </div>
+          <p className="text-[9px] text-slate-500 leading-normal">
+            * Orqa ko'rinishda <strong className="text-slate-400">▲ ajib</strong> brendi dizayni, 50MP kamerasini ko'rishingiz mumkin.
+          </p>
         </div>
 
         {/* AI Mobile Acceleration Engine Controls */}

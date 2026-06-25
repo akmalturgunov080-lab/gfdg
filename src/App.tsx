@@ -11,7 +11,7 @@ import PhoneSettingsApp from './components/PhoneSettingsApp';
 import CodeInterpreterApp from './components/CodeInterpreterApp';
 import { highlightCode } from './utils';
 
-const DEFAULT_WALLPAPER = "https://images.unsplash.com/photo-1506318137071-a8e063b4bec0?auto=format&fit=crop&w=600&q=80";
+const DEFAULT_WALLPAPER = "ajib_fluid_glass";
 
 const CODE_FILES = [
   "server.ts",
@@ -38,7 +38,8 @@ export default function App() {
     batteryLevel: 98,
     speedProfile: 'balanced',
     neuralCoreTurbo: true,
-    onDeviceCache: true
+    onDeviceCache: true,
+    phoneView: 'front'
   });
 
   // Active transaction payload for "Kodini ko'rish" / Cockpit displays
@@ -460,6 +461,7 @@ export default function App() {
             settings={settings} 
             activeApp={activeApp} 
             onAppChange={(app) => setActiveApp(app)}
+            onUpdateSettings={setSettings}
           >
             {/* Conditional Smartphone Application Routing Rendering */}
             {activeApp === 'chat' && (

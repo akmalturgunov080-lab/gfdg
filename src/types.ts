@@ -20,6 +20,7 @@ export interface PhoneSettings {
   speedProfile: 'performance_saver' | 'balanced' | 'all_out_power';
   neuralCoreTurbo: boolean;
   onDeviceCache: boolean;
+  phoneView: 'front' | 'back';
 }
 
 export interface AppFileCode {

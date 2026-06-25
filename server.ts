@@ -48,12 +48,12 @@ async function startServer() {
     const isAllOutPower = speedProfile === 'all_out_power';
 
     // Set resource limitations dynamically depending on mobile speed configs
-    const maxTokens = isPerformanceSaver ? 150 : isAllOutPower ? 600 : 350;
-    const temp = isPerformanceSaver ? 0.35 : isAllOutPower ? 0.85 : 0.6;
+    const maxTokens = isPerformanceSaver ? 250 : isAllOutPower ? 4096 : 1500;
+    const temp = isPerformanceSaver ? 0.35 : isAllOutPower ? 0.85 : 0.65;
     
-    let speedHintInstruction = "Siz telefon ichidagi o'ta tezkor, aqlli va barcha sohalarni yaxshi biladigan yordamchi AIsiz. Foydalanuvchi uzbek tilida gaplashadi. Kod so'rasa, chiroyli formatlangan kodlarni taqdim eting.";
+    let speedHintInstruction = "Siz AJIB SmartAI deb nomlangan daho sun'iy intellektsiz. Dunyodagi barcha sohalarni (kod yozish, matematika, fizika, falsafa, tillar va adabiyotlar, san'at va boshqalar) mukammal darajada bilasiz. Foydalanuvchining har qanday va har sohadagi murakkab savollariga o'ta aniq, chuqur, mukammal va daho darajasida javoblar va chiroyli formatlangan to'liq kodlarni taqdim etasiz. Foydalanuvchi o'zbek tilida gaplashadi.";
     if (isPerformanceSaver) {
-      speedHintInstruction += " DIQQAT: Batareya va xotirani tejash maqsadida javoblaringizni juda qisqa, lo'nda va faqat aniq faktlar bilan 1-3 jumlada qaytaring! Keraksiz gaplar yozmang.";
+      speedHintInstruction += " DIQQAT: Hozirda quvvatni tejash rejimi faol. Shunga qaramasdan savolga eng to'g'ri, lo'nda va eng kerakli faktlardan iborat 1-3 jumlali javob qaytaring!";
     }
 
     // Prepare message contents format for Gemini list of messages
